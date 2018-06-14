@@ -25,9 +25,15 @@ Route::get('/hello', function() {
     return view('hello');
 });
 
+/*
 Route::get('/bonjour/{prenom}', function() { // {prenom} permet de simplifier l'url en écrivant bonjour/Julien plutôt que bonjour?prenom=Julien
 
     // Les deux méthodes suivantes font la même chose
     // return 'Bonjour ' . $_GET['prenom']; // Méthode classique
     return 'Bonjour ' . request('prenom'); // Méthode laravel
+});
+*/
+
+Route::get('bonjour/{nom}', function () {
+    return view('bonjour');
 });
