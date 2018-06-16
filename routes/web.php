@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,5 +37,18 @@ Route::get('/bonjour/{prenom}', function() { // {prenom} permet de simplifier l'
 */
 
 Route::get('bonjour/{nom}', function () {
-    return view('bonjour');
+
+    return view('bonjour', [
+        'prenom' => request('nom'),
+    ]);
+});
+
+
+Route::get('/inscription', function (){
+    return view('inscription');
+});
+
+Route::post('/inscription', function (){
+    return 'Nous avons bien reçu votre email qui est ' . request('email') . 
+    ' et votre mot de passe est ' . request('password');
 });
