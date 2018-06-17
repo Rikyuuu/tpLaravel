@@ -44,11 +44,25 @@ Route::get('bonjour/{nom}', function () {
 });
 
 
-Route::get('/inscription', function (){
+Route::get('/inscription', function () {
     return view('inscription');
 });
 
-Route::post('/inscription', function (){
+Route::post('/inscription', function () {
+
+    $utilisateur = App\Utilisateur::create([
+        'email' => request('email'),
+        'mot_de_passe' => bcrypt(request('password')),
+    ]);
+
     return 'Nous avons bien reçu votre email qui est ' . request('email') . 
     ' et votre mot de passe est ' . request('password');
+});
+
+Route::get('/utilisateurs', function () {
+    $utilisateurs = App\Utilisateur::all();
+
+    return view('utilisateurs', [
+        'utilisateurs' => $utilisateurs
+    ]);
 });
