@@ -49,7 +49,11 @@ Route::get('/inscription', function () {
 });
 
 Route::post('/inscription', function () {
-
+    request()->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required', 'confirmed', 'min:8'],
+        'password_confirmation' => ['required'],
+    ]);
     $utilisateur = App\Utilisateur::create([
         'email' => request('email'),
         'mot_de_passe' => bcrypt(request('password')),
