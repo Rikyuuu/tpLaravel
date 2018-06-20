@@ -40,6 +40,5 @@
                 <button class="button is-link" type="submit">M'inscrire</button>
             </div>
         </div>
-        
     </form>
 @endsection
