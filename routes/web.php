@@ -13,12 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-
-    // echo 'Hello World !';
-    return view('welcome');
-});
-
 Route::get('/a-propos', function () {
     return view('a-propos');
 });
@@ -43,33 +37,10 @@ Route::get('bonjour/{nom}', function () {
     ]);
 });
 
+Route::view('/', 'welcome');
 
-Route::get('/inscription', function () {
-    return view('inscription');
-});
 
-Route::post('/inscription', function () {
-    request()->validate([
-        'email' => ['required', 'email'],
-        'password' => ['required', 'confirmed', 'min:8'],
-        'password_confirmation' => ['required'],
-    ], [
-        'password.min' => 'Pour des raisons de sécurité, votre mot de passe doit faire :min caractères.'
-    ]);
-    
-    $utilisateur = App\Utilisateur::create([
-        'email' => request('email'),
-        'mot_de_passe' => bcrypt(request('password')),
-    ]);
+Route::get('/inscription', 'InscriptionController@formulaire');
+Route::post('/inscription', 'InscriptionController@traitement');
 
-    return 'Nous avons bien reçu votre email qui est ' . request('email') . 
-    ' et votre mot de passe est ' . request('password');
-});
-
-Route::get('/utilisateurs', function () {
-    $utilisateurs = App\Utilisateur::all();
-
-    return view('utilisateurs', [
-        'utilisateurs' => $utilisateurs
-    ]);
-});
+Route::get('/utilisateurs', 'UtilisateursController@liste');
