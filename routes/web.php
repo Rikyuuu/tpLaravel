@@ -47,3 +47,6 @@ Route::get('/utilisateurs', 'UtilisateursController@liste');
 
 Route::get('/connexion', 'ConnexionController@formulaire');
 Route::post('/connexion', 'ConnexionController@traitement');
+
+Route::get('/mon-compte', 'CompteController@accueil');
+Route::get('/deconnexion', 'CompteController@deconnexion');
