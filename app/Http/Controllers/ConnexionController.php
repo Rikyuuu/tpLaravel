@@ -26,6 +26,8 @@ class ConnexionController extends Controller
         var_dump($resultat);
 
         if($resultat) {
+            flash('Vous êtes maintenant connecté !')->success();
+
             return redirect('/mon-compte');
         }
 
