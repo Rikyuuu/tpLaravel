@@ -50,3 +50,4 @@ Route::post('/connexion', 'ConnexionController@traitement');
 
 Route::get('/mon-compte', 'CompteController@accueil');
 Route::get('/deconnexion', 'CompteController@deconnexion');
+Route::get('/modification-mot-de-passe', 'CompteController@modificationMotDePasse');

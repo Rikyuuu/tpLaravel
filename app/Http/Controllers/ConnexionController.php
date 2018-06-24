@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 class ConnexionController extends Controller
 {
@@ -23,12 +24,15 @@ class ConnexionController extends Controller
             'password' => request('password'),
         ]);
 
-        var_dump($resultat);
+        // var_dump($resultat);
 
         if($resultat) {
-            flash('Vous êtes maintenant connecté !')->success();
+            
+            if(auth()->guest()) {
+                flash('Vous êtes maintenant connecté !')->success();
 
-            return redirect('/mon-compte');
+                return redirect('/mon-compte');
+            }
         }
 
         return back()->withInput()->withErrors([

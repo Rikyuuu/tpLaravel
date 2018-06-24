@@ -4,7 +4,38 @@
     <div class="section">
         <h1 class="title is-1">Mon compte</h1>
 
-        <p>Vous êtes bien connecté.</p>
+        <!--<p>Vous êtes bien connecté.</p>-->
         <a href="/deconnexion" class="button">Déconnexion</a>
     </div>
+    <form action="/modification-mot-de-passe" class="section" method="post">
+        {{ csrf_field() }}
+
+        <div class="field">
+    
+            <div class="field">
+                <label class="label">Nouveau mot de passe</label>
+                <div class="control">
+                    <input class="input" type="password" name="password">
+                </div>
+                @if($errors->has('password'))
+                    <p class="help is-danger">{{ $errors->first('password') }}</p>
+                @endif
+            </div>
+    
+            <div class="field">
+                <label class="label">Confirmation du nouveau mot de passe</label>
+                <div class="control">
+                    <input class="input" type="password" name="password_confirmation">
+                </div>
+                @if($errors->has('password_confirmation'))
+                    <p class="help is-danger">{{ $errors->first('password_confirmation') }}</p>
+                @endif
+            </div>
+    
+            <div class="field">
+                <div class="control">
+                    <button class="button is-link" type="submit">Modifier mon mot de passe</button>
+                </div>
+            </div>
+    </form>
 @endsection
