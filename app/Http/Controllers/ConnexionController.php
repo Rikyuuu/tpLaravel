@@ -24,17 +24,25 @@ class ConnexionController extends Controller
             'password' => request('password'),
         ]);
 
-        // var_dump($resultat);
+        var_dump($resultat);
 
         if($resultat) {
             
+            flash('Vous êtes maintenant connecté')->success();
+
+            /*
             if(auth()->guest()) {
                 flash('Vous êtes maintenant connecté !')->success();
 
                 return redirect('/mon-compte');
             }
+            */
+
+            return redirect('/mon-compte');
         }
 
+        //return back()->withInput();
+     
         return back()->withInput()->withErrors([
             'email' => 'Vos identifiants sont incorrects.',
         ]);

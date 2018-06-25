@@ -43,11 +43,12 @@ Route::view('/', 'welcome');
 Route::get('/inscription', 'InscriptionController@formulaire');
 Route::post('/inscription', 'InscriptionController@traitement');
 
-Route::get('/utilisateurs', 'UtilisateursController@liste');
-
 Route::get('/connexion', 'ConnexionController@formulaire');
 Route::post('/connexion', 'ConnexionController@traitement');
 
+Route::get('/utilisateurs', 'UtilisateursController@liste');
+
 Route::get('/mon-compte', 'CompteController@accueil');
+//Route::view('/mon-compte', 'mon-compte');
 Route::get('/deconnexion', 'CompteController@deconnexion');
 Route::get('/modification-mot-de-passe', 'CompteController@modificationMotDePasse');

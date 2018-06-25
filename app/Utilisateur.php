@@ -13,9 +13,9 @@ class Utilisateur extends Model implements Authenticatable
     protected $fillable = ['email', 'mot_de_passe'];
 
     /**
-        * Get the password for the user.
-        *
-        * @return string
+    * Get the password for the user.
+    *
+    * @return string
     */
     
     public function getAuthPassword()
