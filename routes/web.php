@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
 Route::get('/a-propos', function () {
     return view('a-propos');
 });
@@ -21,7 +22,6 @@ Route::get('/hello', function() {
     return view('hello');
 });
 
-/*
 Route::get('/bonjour/{prenom}', function() { // {prenom} permet de simplifier l'url en écrivant bonjour/Julien plutôt que bonjour?prenom=Julien
 
     // Les deux méthodes suivantes font la même chose
@@ -29,14 +29,14 @@ Route::get('/bonjour/{prenom}', function() { // {prenom} permet de simplifier l'
     return 'Bonjour ' . request('prenom'); // Méthode laravel
 });
 */
-
+/*
 Route::get('bonjour/{nom}', function () {
 
     return view('bonjour', [
         'prenom' => request('nom'),
     ]);
 });
-
+*/
 Route::view('/', 'welcome');
 
 
@@ -49,6 +49,6 @@ Route::post('/connexion', 'ConnexionController@traitement');
 Route::get('/utilisateurs', 'UtilisateursController@liste');
 
 Route::get('/mon-compte', 'CompteController@accueil');
-//Route::view('/mon-compte', 'mon-compte');
 Route::get('/deconnexion', 'CompteController@deconnexion');
-Route::get('/modification-mot-de-passe', 'CompteController@modificationMotDePasse');
+
+Route::post('/modification-mot-de-passe', 'CompteController@modificationMotDePasse');

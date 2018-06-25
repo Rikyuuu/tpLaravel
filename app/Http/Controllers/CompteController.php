@@ -36,15 +36,15 @@ class CompteController extends Controller
 
         request()->validate([
             'password' => ['required', 'confirmed', 'min:8'],
-            'password_confirm' => ['required'],
+            'password_confirmation' => ['required'],
         ]);
 
         auth()->user()->update([
             'mot_de_passe' => bcrypt(request('password')),
         ]);
 
-        flash('Votre mot de passe a bien été mis à jour.');
+        flash("Votre mot de passe a bien été mis à jour.")->success();
 
-        return('/mon-compte');
-    }    
+        return redirect('/mon-compte');
+    }
 }
