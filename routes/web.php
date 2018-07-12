@@ -53,7 +53,7 @@ Route::get('/', 'UtilisateursController@liste');
 
 
 Route::group([
-    'middleware' => 'App\Http\Middleware\Auth,'
+    'middleware' => 'App\Http\Middleware\Auth',
 ], function () {
     Route::get('/mon-compte', 'CompteController@accueil');
     Route::get('/deconnexion', 'CompteController@deconnexion');
